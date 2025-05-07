@@ -21,7 +21,7 @@ jobs:
               name: Setup JFrog CLI
               id: setup-cli
               env:
-                JF_URL: ${{ vars.JF_URL }}
+                JF_URL: https://${{ vars.JF_URL }}
                 #JF_PROJECT: ${{ vars.JF_PROJECT }}
               with:
                   oidc-provider-name: davidle-github
@@ -44,7 +44,7 @@ jobs:
                 
             - name: build project
               run: |                      
-                jf pip install -r ./requirements.txt --module=jfrog-python-example
+                jf pip install -r .github/workflows/requirements.txt --module=jfrog-python-example
                 python setup.py sdist bdist_wheel
                 cd dist && echo "hashes=$(sha256sum * | base64 -w0)" >> $GITHUB_OUTPUT
 
