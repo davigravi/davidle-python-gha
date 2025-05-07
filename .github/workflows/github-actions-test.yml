@@ -45,8 +45,8 @@ jobs:
             - name: build project
               run: |                      
                 jf pip install -r .github/workflows/requirements.txt --module=jfrog-python-example
-                python setup.py sdist bdist_wheel
-                cd dist && echo "hashes=$(sha256sum * | base64 -w0)" >> $GITHUB_OUTPUT
+                #python setup.py sdist bdist_wheel
+                #cd dist && echo "hashes=$(sha256sum * | base64 -w0)" >> $GITHUB_OUTPUT
 
             - name: publish python package
               run: |
